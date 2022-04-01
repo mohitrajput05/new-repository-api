@@ -1,4 +1,5 @@
-const User = require('../models/user.model')
+const User = require('../models/user.model');
+const jwt = require('jsonwebtoken');
 exports.register=(request,response)=>{
     User.create({
         username:request.body.username,
@@ -15,7 +16,14 @@ exports.login=(request,response)=>{
         email:request.body.email,
         password:request.body.password
     }).then(result=>{
-        return response.status(200).json(result);
+        // let status;
+        let payload= {subject:result._id}
+        let token =jwt.sign(payload,'hjdjshfdhsjhf');
+       return response.status(200).json({
+           status: "Login success",
+           currentuser:result,
+           token:token
+       });
     }).catch(error =>{
         return response.status(500).json(err);
     })
