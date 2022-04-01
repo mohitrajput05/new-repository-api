@@ -16,7 +16,7 @@ exports.login=(request,response)=>{
         email:request.body.email,
         password:request.body.password
     }).then(result=>{
-        // let status;
+        let status;
         let payload= {subject:result._id}
         let token =jwt.sign(payload,'hjdjshfdhsjhf');
        return response.status(200).json({
