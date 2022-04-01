@@ -14,4 +14,4 @@ router.post('/add-category',upload.single('image'),categoryController.addCategor
 router.get('/category-list',categoryController.categoryList);
 
 
-module.exports = router;
+module.exports = router;        
