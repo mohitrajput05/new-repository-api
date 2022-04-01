@@ -1,6 +1,7 @@
 const express  =require("express");
 const app = express();
 const bodyParser = require('body-parser');
+const port = process.env.PORT||3000;
 const mongoose = require('mongoose');
 const db ="mongodb+srv://Mohit_MongoDB:Mongo%40143214@cluster0.1m47d.mongodb.net/angular_backendApi?retryWrites=true&w=majority"
 mongoose.connect(db,{ useNewUrlParser: true}).then(()=>{
@@ -24,6 +25,6 @@ app.use(express.static("./public"))
 
 
 
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log('App listening on port 3000!');
 });
