@@ -5,7 +5,7 @@ exports.addCategory=(request,response)=>{
     console.log(request.body);
     Category.create({
         name:request.body.name,
-        image:"https://angular-api-new.herokuapp.com/"+request.file.filename,
+        image:"https://angular-api-new.herokuapp.com/images/"+request.file.filename,
     }).then(result=>{
         return response.status(200).json(result);
     }).catch(error =>{
