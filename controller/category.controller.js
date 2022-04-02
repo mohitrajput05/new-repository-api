@@ -19,3 +19,11 @@ exports.categoryList=(request,response)=>{
         return response.status(500).json(err);
     })
 }
+
+exports.deleteCategory=(request,response)=>{
+    Category.deleteOne({_id:request.body.cid}).then(result=>{
+        return response.status(200).json(result);
+    }).catch(error =>{
+        return response.status(500).json({err:"went wrong"});
+    })
+}
