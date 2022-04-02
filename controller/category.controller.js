@@ -24,6 +24,7 @@ exports.deleteCategory=(request,response)=>{
     .then(result=>{
         return response.status(200).json({status:"success"});
     }).catch(error =>{
+        console.log(err);
         return response.status(500).json({err:"went wrong"});
     })
 }
