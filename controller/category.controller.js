@@ -2,7 +2,6 @@ const Category = require('../models/category.model')
 const port = process.env.PORT||3000;
 
 exports.addCategory=(request,response)=>{
-    console.log(request.body);
     Category.create({
         name:request.body.name,
         image:"https://angular-api-new.herokuapp.com/images/"+request.file.filename,
@@ -23,10 +22,8 @@ exports.categoryList=(request,response)=>{
 exports.deleteCategory=(request,response)=>{
     Category.deleteOne({_id:request.body.cid})
     .then(result=>{
-        console.log(result)
         return response.status(200).json({status:"success"});
     }).catch(error =>{
-        console.log(err)
         return response.status(500).json({err:"went wrong"});
     })
 }
