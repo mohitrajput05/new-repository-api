@@ -22,6 +22,7 @@ exports.categoryList=(request,response)=>{
 exports.deleteCategory=(request,response)=>{
     Category.deleteOne({_id:request.body.cid})
     .then(result=>{
+        console.log(result)
         return response.status(200).json({status:"success"});
     }).catch(error =>{
         console.log(error);
