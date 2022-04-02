@@ -4,7 +4,7 @@ const port = process.env.PORT||3000;
 exports.addCategory=(request,response)=>{
     Category.create({
         name:request.body.name,
-        image:"https://angular-api-new.herokuapp.com/images/"+request.file.filename,
+        image:"https://angular-api-new.herokuapp.com/images/"+request.file.filename
     }).then(result=>{
         return response.status(200).json(result);
     }).catch(error =>{
@@ -21,6 +21,22 @@ exports.categoryList=(request,response)=>{
 
 exports.deleteCategory=(request,response)=>{
     Category.deleteOne({_id:request.body.cid})
+    .then(result=>{
+        console.log(result)
+        return response.status(200).json({status:"success"});
+    }).catch(error =>{
+        console.log(error);
+        return response.status(500).json({error:"went wrong"});
+    })
+}
+
+exports.updateCategory=(request,response)=>{
+    Category.updateOne({_id:request.body.cid},
+        {$set:{
+            name:request.body.name,
+        image:"https://angular-api-new.herokuapp.com/images/"+request.file.filename
+        }
+    })
     .then(result=>{
         console.log(result)
         return response.status(200).json({status:"success"});
