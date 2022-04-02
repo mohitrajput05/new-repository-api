@@ -12,7 +12,7 @@ const categoryController = require('../controller/category.controller')
 
 router.post('/add-category',upload.single('image'),categoryController.addCategory);
 router.get('/category-list',categoryController.categoryList);
-router.post('/delete-category',categoryController.categoryList);
+router.post('/delete-category',categoryController.deleteCategory);
 
 
 module.exports = router;        
